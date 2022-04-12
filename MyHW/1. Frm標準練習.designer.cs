@@ -46,9 +46,9 @@ namespace WindowsFormsApp1
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtStep = new System.Windows.Forms.TextBox();
+            this.txtTo = new System.Windows.Forms.TextBox();
+            this.txtFrom = new System.Windows.Forms.TextBox();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -88,6 +88,7 @@ namespace WindowsFormsApp1
             this.button16.TabIndex = 100;
             this.button16.Text = "清空結果欄";
             this.button16.UseVisualStyleBackColor = true;
+            this.button16.Click += new System.EventHandler(this.button16_Click);
             // 
             // label5
             // 
@@ -182,6 +183,7 @@ namespace WindowsFormsApp1
             this.button9.TabIndex = 91;
             this.button9.Text = "do";
             this.button9.UseVisualStyleBackColor = false;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // button10
             // 
@@ -193,6 +195,7 @@ namespace WindowsFormsApp1
             this.button10.TabIndex = 90;
             this.button10.Text = "while";
             this.button10.UseVisualStyleBackColor = false;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
             // button11
             // 
@@ -204,6 +207,7 @@ namespace WindowsFormsApp1
             this.button11.TabIndex = 89;
             this.button11.Text = "for";
             this.button11.UseVisualStyleBackColor = false;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
             // label3
             // 
@@ -238,32 +242,32 @@ namespace WindowsFormsApp1
             this.label1.TabIndex = 86;
             this.label1.Text = "from:";
             // 
-            // textBox3
+            // txtStep
             // 
-            this.textBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.textBox3.Location = new System.Drawing.Point(211, 96);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(76, 22);
-            this.textBox3.TabIndex = 85;
+            this.txtStep.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.txtStep.Location = new System.Drawing.Point(211, 96);
+            this.txtStep.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.txtStep.Name = "txtStep";
+            this.txtStep.Size = new System.Drawing.Size(76, 22);
+            this.txtStep.TabIndex = 85;
             // 
-            // textBox2
+            // txtTo
             // 
-            this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.textBox2.Location = new System.Drawing.Point(211, 58);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(76, 22);
-            this.textBox2.TabIndex = 84;
+            this.txtTo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.txtTo.Location = new System.Drawing.Point(211, 58);
+            this.txtTo.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.txtTo.Name = "txtTo";
+            this.txtTo.Size = new System.Drawing.Size(76, 22);
+            this.txtTo.TabIndex = 84;
             // 
-            // textBox1
+            // txtFrom
             // 
-            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.textBox1.Location = new System.Drawing.Point(211, 25);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(76, 22);
-            this.textBox1.TabIndex = 83;
+            this.txtFrom.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.txtFrom.Location = new System.Drawing.Point(211, 25);
+            this.txtFrom.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.txtFrom.Name = "txtFrom";
+            this.txtFrom.Size = new System.Drawing.Size(76, 22);
+            this.txtFrom.TabIndex = 83;
             // 
             // button5
             // 
@@ -340,9 +344,9 @@ namespace WindowsFormsApp1
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtStep);
+            this.Controls.Add(this.txtTo);
+            this.Controls.Add(this.txtFrom);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
@@ -375,9 +379,9 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtStep;
+        private System.Windows.Forms.TextBox txtTo;
+        private System.Windows.Forms.TextBox txtFrom;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button3;

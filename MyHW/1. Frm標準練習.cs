@@ -159,5 +159,57 @@ namespace WindowsFormsApp1
                 }
             }
         }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            int F = int.Parse(txtFrom.Text);
+            int T = int.Parse(txtTo.Text);
+            int S = int.Parse(txtStep.Text);
+            int SUM = 0;
+            for (int i = F; i <= T; i += S)
+            {
+                SUM += i;
+            }
+            lblResult.Text = F.ToString() + " 到 " + T.ToString() + " 相隔 " + (S - 1).ToString()
+                + "\r\n" + "加總為  " + SUM.ToString();
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            int F = int.Parse(txtFrom.Text);
+            int T = int.Parse(txtTo.Text);
+            int S = int.Parse(txtStep.Text);
+            int SUM = 0;
+            int i = F;
+            while (i <= T)
+            {
+                SUM += i;
+                i += S;
+            }
+            lblResult.Text = F.ToString() + " 到 " + T.ToString() + " 相隔 " + (S - 1).ToString()
+                + "\r\n" + "加總為  " + SUM.ToString();
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            int F = int.Parse(txtFrom.Text);
+            int T = int.Parse(txtTo.Text);
+            int S = int.Parse(txtStep.Text);
+            int SUM = 0;
+            int i = F;
+            do
+            {
+                SUM += i;
+                i += S;
+            } while (i <= T);
+            lblResult.Text = F.ToString() + " 到 " + T.ToString() + " 相隔 " + (S - 1).ToString()
+                + "\r\n" + "加總為  " + SUM.ToString();
+        }
+
+        private void button16_Click(object sender, EventArgs e)
+        {
+            lblResult.Text = "結果  ";
+        }
     }
+     
 }

@@ -64,6 +64,12 @@
     <Compile Include="3. FrmProducts.designer.cs">
       <DependentUpon>3. FrmProducts.cs</DependentUpon>
     </Compile>
+    <Compile Include="4. Dataset.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="4. Dataset.Designer.cs">
+      <DependentUpon>4. Dataset.cs</DependentUpon>
+    </Compile>
     <Compile Include="myDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

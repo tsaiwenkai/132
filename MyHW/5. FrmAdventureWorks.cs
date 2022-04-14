@@ -16,14 +16,26 @@ namespace MyHomeWork
         public FrmAdventureWorks()
         {
             InitializeComponent();
+
+            SqlConnection conn = new SqlConnection("Data Source=.;Initial Catalog=AdventureWorks2019;Integrated Security=True");
+            
+            SqlDataAdapter dataAdapter = new SqlDataAdapter(
+                "select distinct datepart(yyyy,[ModifiedDate]) as 'year' " +
+                " FROM Production.ProductPhoto" +
+                " group by datepart(yyyy,[ModifiedDate])"
+                , conn);
+            DataTable da = new DataTable();
+            dataAdapter.Fill(da);
+
+
+            comboBox1.DataSource = da;
+            comboBox1.DisplayMember = "year";
+            //-------------------------------------------------------------------------------------
             productPhotoTableAdapter1.Fill(dataSet21.ProductPhoto);
             dataGridView1.DataSource = dataSet21.ProductPhoto;
             bindingSource1.DataSource = dataSet21.ProductPhoto;
             dataGridView1.DataSource = bindingSource1;
             bindingNavigator1.BindingSource = bindingSource1;
-            //------------------------------------------------------------------------
-            comboBox1.DataSource = dataSet21.ProductPhoto;
-            comboBox1.DisplayMember = "ModifiedDate";        
         }
 
         //void dateyear()
@@ -83,9 +95,9 @@ namespace MyHomeWork
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ////DateTime x = comboBox1.Text;
-            //productPhotoTableAdapter1.Fillcomdate(dataSet21.ProductPhoto, x);
-            //dataGridView1.DataSource = dataSet21.ProductPhoto;
+            string yyyy = comboBox1.Text;
+            productPhotoTableAdapter1.Filldateyear(dataSet21.ProductPhoto, yyyy);
+
         }
     }
 }

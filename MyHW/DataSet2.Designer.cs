@@ -984,19 +984,19 @@ SELECT ProductPhotoID, ThumbNailPhoto, ThumbnailPhotoFileName, LargePhoto, Large
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = "SELECT          ProductPhotoID, ThumbNailPhoto, ThumbnailPhotoFileName, LargePhot" +
-                "o, LargePhotoFileName, ModifiedDate\r\nFROM              Production.ProductPhoto\r\n" +
-                "WHERE          ModifiedDate like @XXX";
+            this._commandCollection[2].CommandText = "SELECT ProductPhotoID, ThumbNailPhoto, ThumbnailPhotoFileName, LargePhoto, LargeP" +
+                "hotoFileName, ModifiedDate FROM Production.ProductPhoto where ModifiedDate betwe" +
+                "en @date1 and @date2";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@XXX", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "ModifiedDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@date1", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "ModifiedDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@date2", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "ModifiedDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[3].Connection = this.Connection;
             this._commandCollection[3].CommandText = "SELECT ProductPhotoID, ThumbNailPhoto, ThumbnailPhotoFileName, LargePhoto, LargeP" +
-                "hotoFileName, ModifiedDate FROM Production.ProductPhoto where ModifiedDate betwe" +
-                "en @date1 and @date2";
+                "hotoFileName, ModifiedDate FROM [Production].[ProductPhoto] where SUBSTRING(CAST" +
+                "([ModifiedDate]as char(10)),7,4)=@yyyy";
             this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@date1", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "ModifiedDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@date2", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "ModifiedDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@yyyy", global::System.Data.SqlDbType.VarChar, 1024, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[4] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[4].Connection = this.Connection;
             this._commandCollection[4].CommandText = "SELECT ProductPhotoID, ThumbNailPhoto, ThumbnailPhotoFileName, LargePhoto, LargeP" +
@@ -1057,34 +1057,8 @@ SELECT ProductPhotoID, ThumbNailPhoto, ThumbnailPhotoFileName, LargePhoto, Large
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
-        public virtual int Fillcomdate(DataSet2.ProductPhotoDataTable dataTable, System.DateTime XXX) {
-            this.Adapter.SelectCommand = this.CommandCollection[2];
-            this.Adapter.SelectCommand.Parameters[0].Value = ((System.DateTime)(XXX));
-            if ((this.ClearBeforeFill == true)) {
-                dataTable.Clear();
-            }
-            int returnValue = this.Adapter.Fill(dataTable);
-            return returnValue;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
-        public virtual DataSet2.ProductPhotoDataTable GetDataBy3(System.DateTime XXX) {
-            this.Adapter.SelectCommand = this.CommandCollection[2];
-            this.Adapter.SelectCommand.Parameters[0].Value = ((System.DateTime)(XXX));
-            DataSet2.ProductPhotoDataTable dataTable = new DataSet2.ProductPhotoDataTable();
-            this.Adapter.Fill(dataTable);
-            return dataTable;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
         public virtual int Filldate(DataSet2.ProductPhotoDataTable dataTable, System.DateTime date1, System.DateTime date2) {
-            this.Adapter.SelectCommand = this.CommandCollection[3];
+            this.Adapter.SelectCommand = this.CommandCollection[2];
             this.Adapter.SelectCommand.Parameters[0].Value = ((System.DateTime)(date1));
             this.Adapter.SelectCommand.Parameters[1].Value = ((System.DateTime)(date2));
             if ((this.ClearBeforeFill == true)) {
@@ -1099,9 +1073,45 @@ SELECT ProductPhotoID, ThumbNailPhoto, ThumbnailPhotoFileName, LargePhoto, Large
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual DataSet2.ProductPhotoDataTable GetDataBy(System.DateTime date1, System.DateTime date2) {
-            this.Adapter.SelectCommand = this.CommandCollection[3];
+            this.Adapter.SelectCommand = this.CommandCollection[2];
             this.Adapter.SelectCommand.Parameters[0].Value = ((System.DateTime)(date1));
             this.Adapter.SelectCommand.Parameters[1].Value = ((System.DateTime)(date2));
+            DataSet2.ProductPhotoDataTable dataTable = new DataSet2.ProductPhotoDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int Filldateyear(DataSet2.ProductPhotoDataTable dataTable, string yyyy) {
+            this.Adapter.SelectCommand = this.CommandCollection[3];
+            if ((yyyy == null)) {
+                throw new global::System.ArgumentNullException("yyyy");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(yyyy));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual DataSet2.ProductPhotoDataTable GetDataBy3(string yyyy) {
+            this.Adapter.SelectCommand = this.CommandCollection[3];
+            if ((yyyy == null)) {
+                throw new global::System.ArgumentNullException("yyyy");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(yyyy));
+            }
             DataSet2.ProductPhotoDataTable dataTable = new DataSet2.ProductPhotoDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;

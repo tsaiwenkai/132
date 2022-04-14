@@ -30,10 +30,6 @@ namespace MyHW
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.button21 = new System.Windows.Forms.Button();
-            this.button20 = new System.Windows.Forms.Button();
-            this.button19 = new System.Windows.Forms.Button();
-            this.button18 = new System.Windows.Forms.Button();
             this.button17 = new System.Windows.Forms.Button();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
@@ -77,10 +73,6 @@ namespace MyHW
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.button21);
-            this.splitContainer1.Panel1.Controls.Add(this.button20);
-            this.splitContainer1.Panel1.Controls.Add(this.button19);
-            this.splitContainer1.Panel1.Controls.Add(this.button18);
             this.splitContainer1.Panel1.Controls.Add(this.button17);
             // 
             // splitContainer1.Panel2
@@ -89,46 +81,6 @@ namespace MyHW
             this.splitContainer1.Size = new System.Drawing.Size(937, 477);
             this.splitContainer1.SplitterDistance = 80;
             this.splitContainer1.TabIndex = 6;
-            // 
-            // button21
-            // 
-            this.button21.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button21.Location = new System.Drawing.Point(0, 204);
-            this.button21.Name = "button21";
-            this.button21.Size = new System.Drawing.Size(76, 51);
-            this.button21.TabIndex = 4;
-            this.button21.Text = "縮放PANL";
-            this.button21.UseVisualStyleBackColor = true;
-            // 
-            // button20
-            // 
-            this.button20.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button20.Location = new System.Drawing.Point(0, 153);
-            this.button20.Name = "button20";
-            this.button20.Size = new System.Drawing.Size(76, 51);
-            this.button20.TabIndex = 3;
-            this.button20.Text = "readXml";
-            this.button20.UseVisualStyleBackColor = true;
-            // 
-            // button19
-            // 
-            this.button19.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button19.Location = new System.Drawing.Point(0, 102);
-            this.button19.Name = "button19";
-            this.button19.Size = new System.Drawing.Size(76, 51);
-            this.button19.TabIndex = 2;
-            this.button19.Text = "writeXml";
-            this.button19.UseVisualStyleBackColor = true;
-            // 
-            // button18
-            // 
-            this.button18.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button18.Location = new System.Drawing.Point(0, 51);
-            this.button18.Name = "button18";
-            this.button18.Size = new System.Drawing.Size(76, 51);
-            this.button18.TabIndex = 1;
-            this.button18.Text = "[]-[]查詢";
-            this.button18.UseVisualStyleBackColor = true;
             // 
             // button17
             // 
@@ -289,10 +241,6 @@ namespace MyHW
         #endregion
 
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.Button button21;
-        private System.Windows.Forms.Button button20;
-        private System.Windows.Forms.Button button19;
-        private System.Windows.Forms.Button button18;
         private System.Windows.Forms.Button button17;
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.SplitContainer splitContainer3;

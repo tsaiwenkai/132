@@ -18,7 +18,7 @@ namespace MyHomeWork
             InitializeComponent();
 
             SqlConnection conn = new SqlConnection("Data Source=.;Initial Catalog=AdventureWorks2019;Integrated Security=True");
-            
+
             SqlDataAdapter dataAdapter = new SqlDataAdapter(
                 "select distinct datepart(yyyy,[ModifiedDate]) as 'year' " +
                 " FROM Production.ProductPhoto" +
@@ -35,7 +35,7 @@ namespace MyHomeWork
             dataGridView1.DataSource = dataSet21.ProductPhoto;
             bindingSource1.DataSource = dataSet21.ProductPhoto;
             dataGridView1.DataSource = bindingSource1;
-            bindingNavigator1.BindingSource = bindingSource1;
+            //bindingNavigator1.BindingSource = bindingSource1;
         }
 
         //void dateyear()

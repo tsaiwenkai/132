@@ -18,7 +18,7 @@ namespace MyHomeWork
             productsTableAdapter1.Fill(dataSet11.Products);
             bindingSource1.DataSource = dataSet11.Products;
             dataGridView1.DataSource = bindingSource1;
-            bindingNavigator1.BindingSource = bindingSource1;
+            //bindingNavigator1.BindingSource = bindingSource1;
             lblResult.Text = $"結果: {dataSet11.Products.Count}筆";
         }
 
@@ -33,7 +33,7 @@ namespace MyHomeWork
                 bindingSource1.DataSource = dataSet11.Products;
                 dataGridView1.DataSource = bindingSource1;
                 lblResult.Text = $"結果: {x}元~{y}元 總共有{dataSet11.Products.Count}筆";
-                bindingNavigator1.BindingSource = bindingSource1;
+                //bindingNavigator1.BindingSource = bindingSource1;
 
             }
             catch(Exception ex)
@@ -52,7 +52,7 @@ namespace MyHomeWork
                 bindingSource1.DataSource = dataSet11.Products;
                 dataGridView1.DataSource = bindingSource1;
                 lblResult.Text = $"結果: 名子內包含{name}的總共有{dataSet11.Products.Count}筆";
-                bindingNavigator1.BindingSource = bindingSource1;
+                //bindingNavigator1.BindingSource = bindingSource1;
             }
             else
             {

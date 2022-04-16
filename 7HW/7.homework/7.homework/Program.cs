@@ -1,12 +1,11 @@
-﻿using MyHomeWork;
+﻿using MyHW;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using WindowsFormsApp1;
 
-namespace MyHW
+namespace _7.homework
 {
     static class Program
     {

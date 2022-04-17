@@ -61,6 +61,7 @@ namespace MyHomeWork
             this.Cancel.Size = new System.Drawing.Size(71, 23);
             this.Cancel.TabIndex = 20;
             this.Cancel.Text = "取消(&C)";
+            this.Cancel.Click += new System.EventHandler(this.Cancel_Click);
             // 
             // OK
             // 
@@ -71,6 +72,7 @@ namespace MyHomeWork
             this.OK.Size = new System.Drawing.Size(71, 23);
             this.OK.TabIndex = 19;
             this.OK.Text = "確定(&O)";
+            this.OK.Click += new System.EventHandler(this.OK_Click);
             // 
             // PasswordTextBox
             // 
@@ -135,7 +137,7 @@ namespace MyHomeWork
             this.Controls.Add(this.PasswordLabel);
             this.Controls.Add(this.UsernameLabel);
             this.Controls.Add(this.LogoPictureBox);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FrmLogon";
             this.Text = "FrmLogon";
             ((System.ComponentModel.ISupportInitialize)(this.LogoPictureBox)).EndInit();

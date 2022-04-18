@@ -15,6 +15,7 @@ namespace MyHW
         public FrmMyAlbum_V1()
         {
             InitializeComponent();
+
             cityNameTableAdapter1.Fill(dataSet41.CityName);
 
             for (int i = 0; i < dataSet41.CityName.Rows.Count; i++)
@@ -36,6 +37,15 @@ namespace MyHW
           
             pictureTableAdapter1.FillCity(dataSet41.Picture, x.Text);
             dataGridView1.DataSource = dataSet41.Picture;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.Filter = "(*.jpg)|*.jpg";
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+
+            }
         }
     }
 }

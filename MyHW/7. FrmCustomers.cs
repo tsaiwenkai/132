@@ -95,12 +95,19 @@ namespace MyHW
                         {
                             ListViewGroup group = this.listView1.Groups.Add(reader["Country"].ToString(), reader["Country"].ToString());
                             Lvi.Group = group;
+                            
                         }
                         else
                         {
                             ListViewGroup group = this.listView1.Groups[reader["Country"].ToString()];
+                            //group.Tag = 0;
                             Lvi.Group = group;
                         }
+
+                        //listView1.Groups[reader["Country"].ToString()].Tag = 0;
+                       
+
+
                         for (int i = 1; i < reader.FieldCount; i++)
                         {
                             if (reader.IsDBNull(i))
@@ -112,7 +119,15 @@ namespace MyHW
                                 Lvi.SubItems.Add(reader[i].ToString());
                             }
                         }
+
                     }
+
+
+                    for(int i = 0; i < listView1.Groups.Count; i++)
+                    {
+                        this.listView1.Groups[i].Header = $"{listView1.Groups[i].Name}({listView1.Groups[i].Count})";
+                    }
+                    
                 }
             }
             catch (Exception ex)

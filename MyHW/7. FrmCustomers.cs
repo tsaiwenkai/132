@@ -123,10 +123,10 @@ namespace MyHW
                     }
 
 
-                    for(int i = 0; i < listView1.Groups.Count; i++)
-                    {
-                        this.listView1.Groups[i].Header = $"{listView1.Groups[i].Name}({listView1.Groups[i].Count})";
-                    }
+                    //for(int i = 0; i < listView1.Groups.Count; i++)
+                    //{
+                    //    this.listView1.Groups[i].Header = $"{listView1.Groups[i].Name}({listView1.Groups[i].Count})";
+                    //}
                     
                 }
             }

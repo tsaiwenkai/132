@@ -24,7 +24,7 @@ namespace MyHomeWork
         {
             try
             {
-                using (SqlConnection conn = new SqlConnection(Settings.Default.NorthwindConnectionString))
+                using (SqlConnection conn = new SqlConnection(Settings.Default.Mydata))
                 {
                     string U = UsernameTextBox.Text;
                     string P = PasswordTextBox.Text;
@@ -48,7 +48,7 @@ namespace MyHomeWork
         {
             try
             {
-                using (SqlConnection conn = new SqlConnection(Settings.Default.NorthwindConnectionString))
+                using (SqlConnection conn = new SqlConnection(Settings.Default.Mydata))
                 {
                     string U = UsernameTextBox.Text;
                     string P = PasswordTextBox.Text;
@@ -63,8 +63,18 @@ namespace MyHomeWork
 
                     if (dataReader.HasRows)
                     {
-                        FrmCustomers Fc = new FrmCustomers();
-                        Fc.Show();
+                        //Form1 Fc = new Form1();                       
+                        //this.Hide();
+                        //Fc.ShowDialog();
+
+                        //Fc.Owner = this;
+                        //Application.ExitThread();
+                        this.Hide();
+
+                        Form1 Fc = new Form1();                      
+                        Fc.ShowDialog();
+
+                        this.Close();
                     }
                     else
                     {

@@ -57,9 +57,17 @@ namespace MyHW
                             pic.Image.Save(da, System.Drawing.Imaging.ImageFormat.Jpeg);
                             byte[] bytes = da.GetBuffer();
                             //--------------------------------------
+
                             command.Parameters.Add("@City", SqlDbType.Text).Value = this.comboBox1.Text;
+
                             command.Parameters.Add("@Picture", SqlDbType.Image).Value = bytes;  //bytes變數為圖片2進制格式為陣列
+
+
+
+
+
                             command.ExecuteNonQuery();
+
                         }
 
                     }
@@ -263,30 +271,6 @@ namespace MyHW
             {
                 MessageBox.Show(ex.Message);
             }
-        }
-
-
-
-
-
-        private void cityNameDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void myCityBindingNavigatorSaveItem_Click(object sender, EventArgs e)
-        {
-            this.Validate();
-            this.myCityBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.dataSet3);
-
-        }
-
-        private void FrmMyAlbum_V1_Load(object sender, EventArgs e)
-        {
-            // TODO: 這行程式碼會將資料載入 'dataSet3.MyCity' 資料表。您可以視需要進行移動或移除。
-            this.myCityTableAdapter.Fill(this.dataSet3.MyCity);
-
         }
     }
 }

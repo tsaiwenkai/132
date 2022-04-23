@@ -82,5 +82,14 @@ namespace MyHW
             FG.Visible = true;
             splitContainer2.Panel2.Controls.Add(FG);
         }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            splitContainer2.Panel2.Controls.Clear();
+            threeview th = new threeview();
+            th.TopLevel = false;
+            th.Visible = true;
+            splitContainer2.Panel2.Controls.Add(th);
+        }
     }
 }

@@ -121,6 +121,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSet3.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DataSet5.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet5.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -137,6 +142,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="threeview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="threeview.Designer.cs">
+      <DependentUpon>threeview.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="1. Frm標準練習.resx">
       <DependentUpon>1. Frm標準練習.cs</DependentUpon>
     </EmbeddedResource>
@@ -172,7 +183,11 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="threeview.resx">
+      <DependentUpon>threeview.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="DataSet2.xsc">
       <DependentUpon>DataSet2.xsd</DependentUpon>
     </None>
@@ -194,6 +209,17 @@
     </None>
     <None Include="DataSet3.xss">
       <DependentUpon>DataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet5.xsc">
+      <DependentUpon>DataSet5.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet5.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSet5.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSet5.xss">
+      <DependentUpon>DataSet5.xsd</DependentUpon>
     </None>
     <None Include="myDataSet.xsc">
       <DependentUpon>myDataSet.xsd</DependentUpon>
@@ -243,6 +269,13 @@
     <Content Include="MyDB_log.ldf">
       <DependentUpon>MyDB.mdf</DependentUpon>
     </Content>
+    <None Include="Resources\2017061207524063_P286420_9a60a447.jpg" />
+    <None Include="Resources\pSzcyHK4aM.jpg" />
+    <None Include="Resources\宽水平无缝格朗基毛笔条纹图案-浅背景中的蓝色色条-无缝矢量图-无缝矢量图案背景-182676479.jpg" />
+    <None Include="Resources\1082067-2104100PQ032.jpg" />
+    <None Include="Resources\抽象流体矢量形状-波形表单背景-矢量液体梯度图-时尚设计横幅-158086701.jpg" />
+    <None Include="Resources\pngtree-purple-fantasy-beautiful-starry-sky-background-image_468780.jpg" />
+    <None Include="Resources\107133_173204119000_2.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

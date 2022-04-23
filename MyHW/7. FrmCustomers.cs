@@ -75,7 +75,7 @@ namespace MyHW
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            CreadListview();
+            //CreadListview();
             try
             {
                 using (SqlConnection conn = new SqlConnection(Settings.Default.NorthwindConnectionString))
@@ -355,106 +355,6 @@ namespace MyHW
                                 ListViewGroup group = this.listView1.Groups[reader["Country"].ToString()];
                                 Lvi.Group = group;
                             }
-                            for (int i = 1; i < reader.FieldCount; i++)
-                            {
-                                if (reader.IsDBNull(i))
-                                {
-                                    Lvi.SubItems.Add("null");
-                                }
-                                else
-                                {
-                                    Lvi.SubItems.Add(reader[i].ToString());
-                                }
-                            }
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.ToString());
-                }
-            }
-        }
-
-        private void countryToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                using (SqlConnection conn = new SqlConnection(Settings.Default.NorthwindConnectionString))
-                {
-                    conn.Open();
-                    SqlCommand command = new SqlCommand();// ("select * from Customers where CountryName=", conn);
-                    command.CommandText = $"select count([Country]) as Count ,[Country] from Customers  group by[Country]";
-                    command.Connection = conn;
-                    SqlDataReader reader = command.ExecuteReader();
-                    DataTable da = reader.GetSchemaTable();
-                    listView1.Columns.Clear();
-                    for (int i = 0; i < da.Rows.Count; i++)
-                    {
-                        listView1.Columns.Add(da.Rows[i][0].ToString());
-                    }
-                    listView1.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-            try
-            {
-                using (SqlConnection conn = new SqlConnection(Settings.Default.NorthwindConnectionString))
-                {
-                    conn.Open();
-                    SqlCommand command = new SqlCommand();// ("select * from Customers where Country='comboBox1.Text' ", conn);
-                    command.CommandText = $" select count([Country]) ,[Country] from Customers where Country='{comboBox1.Text}' group by[Country] ";
-                    command.Connection = conn;
-                    SqlDataReader reader = command.ExecuteReader();
-                    listView1.Items.Clear();
-                    while (reader.Read())
-                    {
-                        ListViewItem Lvi = listView1.Items.Add(reader[0].ToString());
-                        for (int i = 1; i < reader.FieldCount; i++)
-                        {
-                            if (reader.IsDBNull(i))
-                            {
-                                Lvi.SubItems.Add("null");
-                            }
-                            else
-                            {
-                                Lvi.SubItems.Add(reader[i].ToString());
-                            }
-                        }
-                        //換顏色
-                        if (Lvi.Index % 2 == 0)
-                        {
-                            Lvi.BackColor = Color.DarkGray;
-                        }
-                        else
-                        {
-                            Lvi.BackColor = Color.Crimson;
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-            if (comboBox1.Text == "All")
-            {
-                try
-                {
-                    using (SqlConnection conn = new SqlConnection(Settings.Default.NorthwindConnectionString))
-                    {
-                        conn.Open();
-                        SqlCommand command = new SqlCommand();// ("select * from Customers where Country='comboBox1.Text' ", conn);                  
-                        command.CommandText = $"  select count([Country]) ,[Country] from Customers  group by[Country] ";
-                        command.Connection = conn;
-                        SqlDataReader reader = command.ExecuteReader();
-                        listView1.Items.Clear();
-                        while (reader.Read())
-                        {
-                            ListViewItem Lvi = listView1.Items.Add(reader[0].ToString());
                             for (int i = 1; i < reader.FieldCount; i++)
                             {
                                 if (reader.IsDBNull(i))

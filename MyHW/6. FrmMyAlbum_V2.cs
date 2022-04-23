@@ -28,6 +28,7 @@ namespace MyHW
 
         private void FlowLayoutPanel3_DragDrop(object sender, DragEventArgs e)
         {
+            flowLayoutPanel3.Controls.Clear();
             if (comboBox1.Text == "")
             {
                 MessageBox.Show("請選擇城市");
@@ -63,9 +64,6 @@ namespace MyHW
                             command.Parameters.Add("@Picture", SqlDbType.Image).Value = bytes;  //bytes變數為圖片2進制格式為陣列
 
 
-
-
-
                             command.ExecuteNonQuery();
 
                         }
@@ -77,7 +75,8 @@ namespace MyHW
                     MessageBox.Show(ex.Message);
                 }
                 CreadComBoBox();
-            }  
+            }
+            this.myCityTableAdapter.Fill(this.dataSet3.MyCity);
         }
 
         private void FlowLayoutPanel3_DragEnter(object sender, DragEventArgs e)
@@ -105,6 +104,7 @@ namespace MyHW
             {
                 MessageBox.Show(ex.Message);
             }
+
         }
 
         private void CreatLinkLabel()
@@ -121,6 +121,7 @@ namespace MyHW
                     {
                         LinkLabel Llabel = new LinkLabel();
                         Llabel.Text = $"{dataReader[0]}";
+                        Llabel.AutoSize = false;
                         Llabel.Left = 5;
                         Llabel.Top += 30;
 
@@ -142,26 +143,33 @@ namespace MyHW
             {
                 using (SqlConnection conn = new SqlConnection(Settings.Default.Mydata))
                 {
-                    
+
                     SqlCommand command = new SqlCommand($"select * from MyCity where CityName= '{lab.Text}'", conn);
                     conn.Open();
                     SqlDataReader dataReader = command.ExecuteReader();
                     flowLayoutPanel1.Controls.Clear();
-                    while (dataReader.Read())
+                    if (dataReader.Read().ToString() == null)
                     {
-                        byte[] bytes = (byte[])dataReader["Picture"];
-                        MemoryStream da = new MemoryStream(bytes);
+                        ClearNull();
+                    }
+                    else
+                    {
+                        while (dataReader.Read())
+                        {
+                            byte[] bytes = (byte[])dataReader["Picture"];
+                            MemoryStream da = new MemoryStream(bytes);
 
-                        PictureBox pic = new PictureBox();
-                        pic.Image = Image.FromStream(da);
-                        pic.SizeMode = PictureBoxSizeMode.StretchImage;
-                        pic.Width = 300;
-                        pic.Height = 200;
+                            PictureBox pic = new PictureBox();
+                            pic.Image = Image.FromStream(da);
+                            pic.SizeMode = PictureBoxSizeMode.StretchImage;
+                            pic.Width = 300;
+                            pic.Height = 200;
 
 
-                        pic.Click += Pic_Click;
-                        flowLayoutPanel1.Controls.Add(pic);
-                       
+                            pic.Click += Pic_Click;
+                            flowLayoutPanel1.Controls.Add(pic);
+
+                        }
                     }
                 }
             }
@@ -177,50 +185,6 @@ namespace MyHW
             ownedForm.BackgroundImageLayout = ImageLayout.Stretch;
             ownedForm.BackgroundImage=((PictureBox)sender).Image;
             ownedForm.Show();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                using (SqlConnection conn = new SqlConnection(Settings.Default.Mydata))
-                {
-                    SqlCommand comm = new SqlCommand();
-                    comm.CommandText = "Insert into MyCity(CityName,Picture) values(@CityName,@Picture)";
-                    comm.Connection = conn;
-                    conn.Open();
-
-                    List<string> filteredFiles;
-                    FolderBrowserDialog FolderBrowser = new FolderBrowserDialog();
-
-                    DialogResult result = FolderBrowser.ShowDialog();
-                    filteredFiles = Directory.GetFiles(FolderBrowser.SelectedPath, "*.*").Where(file => file.ToLower().EndsWith("jpg")).ToList();
-                    for (int i = 0; i < filteredFiles.Count; i++)
-                    {
-                        comm.Parameters.Clear();
-                        PictureBox pic = new PictureBox();
-                        pic.Image = Image.FromFile(filteredFiles[i]);
-                        pic.SizeMode = PictureBoxSizeMode.StretchImage;
-                        pic.Width = 300;
-                        pic.Height = 200;
-                        pic.BorderStyle = BorderStyle.FixedSingle;
-                        flowLayoutPanel3.Controls.Add(pic);
-
-                        MemoryStream ms = new MemoryStream();
-                        pic.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
-                        byte[] bytes = ms.GetBuffer();
-                        comm.Parameters.Add("@CityName", SqlDbType.Int).Value = this.comboBox1.SelectedIndex;
-                        comm.Parameters.Add("@Picture", SqlDbType.Image).Value = bytes;
-
-                        comm.ExecuteNonQuery();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -264,6 +228,79 @@ namespace MyHW
                     conn.Open();
                  
                      command.ExecuteNonQuery();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void myCityBindingNavigatorSaveItem_Click(object sender, EventArgs e)
+        {
+            this.Validate();
+            this.myCityBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.dataSet3);
+
+        }
+
+        private void FrmMyAlbum_V1_Load(object sender, EventArgs e)
+        {
+            // TODO: 這行程式碼會將資料載入 'dataSet3.MyCity' 資料表。您可以視需要進行移動或移除。
+            this.myCityTableAdapter.Fill(this.dataSet3.MyCity);
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(Settings.Default.Mydata))
+                {
+
+                    SqlCommand command = new SqlCommand($"select * from MyCity where CityName= '{comboBox1.Text}'", conn);
+                    conn.Open();
+                    SqlDataReader dataReader = command.ExecuteReader();
+                    flowLayoutPanel3.Controls.Clear();
+                    if (dataReader.Read().ToString() == null)
+                    {
+                        ClearNull();
+                    }
+                    while (dataReader.Read())
+                    {
+                        byte[] bytes = (byte[])dataReader["Picture"];
+                        MemoryStream da = new MemoryStream(bytes);
+
+                        PictureBox pic = new PictureBox();
+                        pic.Image = Image.FromStream(da);
+                        pic.SizeMode = PictureBoxSizeMode.StretchImage;
+                        pic.Width = 300;
+                        pic.Height = 200;
+
+                        flowLayoutPanel3.Controls.Add(pic);
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        void ClearNull()
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(Settings.Default.Mydata))
+                {
+                    SqlCommand command = new SqlCommand();
+                    command.CommandText = $"delete from MyCity where picture is null";
+                    command.Connection = conn;
+                    conn.Open();
+
+                    command.ExecuteNonQuery();
 
                 }
             }
